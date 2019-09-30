@@ -1,0 +1,32 @@
+name: scraping electric power consumption
+on:
+  schedule:
+  - cron: 0 0 * * *
+jobs:
+  scraping:
+    runs-on: ubuntu-latest
+    services:
+      selenium:
+        image: selenium/standalone-chrome:3.141.59-vanadium
+        ports:
+          - 4444:4444
+        volumes:
+          - /dev/shm:/dev/shm
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-ruby@v1
+      with:
+        ruby-version: '2.5'
+    - name: execute
+      env:
+        URL: ${{ secrets.URL }}
+        LOGINID: ${{ secrets.LOGINID }}
+        PASSWORD: ${{ secrets.PASSWORD }}
+        SPREADSHEET_KEY: ${{ secrets.SPREADSHEET_KEY }}
+        GD_CLIENT_ID: ${{ secrets.GD_CLIENT_ID }}
+        GD_CLIENT_SECRET: ${{ secrets.GD_CLIENT_SECRET }}
+        GD_REFRESH_TOKEN: ${{ secrets.GD_REFRESH_TOKEN }}
+      run: |
+        bundle install
+        ruby make_config.rb
+        ruby scraping.rb
