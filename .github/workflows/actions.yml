@@ -1,7 +1,7 @@
 name: scraping electric power consumption
 on:
   schedule:
-  - cron: 40 11 * * *
+  - cron: 4 11 * * *
 jobs:
   scraping:
     runs-on: ubuntu-latest
@@ -28,6 +28,7 @@ jobs:
         GD_REFRESH_TOKEN: ${{ secrets.GD_REFRESH_TOKEN }}
       run: |
         gem install bundler
+        bundle update --bundler
         bundle install
         ruby make_config.rb
         ruby scraping.rb
