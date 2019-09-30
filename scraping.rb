@@ -3,8 +3,6 @@ require 'date'
 require 'dotenv/load'
 require 'google_drive'
 
-logger = Logger.new(STDOUT)
-
 driver = Selenium::WebDriver.for :remote, desired_capabilities: :chrome
 
 def driver.find_and_wait_element(how, what)
