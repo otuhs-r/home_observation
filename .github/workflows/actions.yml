@@ -1,7 +1,7 @@
 name: scraping electric power consumption
 on:
   schedule:
-  - cron: 45 11 * * *
+  - cron: 0 0 * * *
 jobs:
   scraping:
     runs-on: ubuntu-latest
