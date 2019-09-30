@@ -26,6 +26,7 @@ jobs:
         GD_CLIENT_ID: ${{ secrets.GD_CLIENT_ID }}
         GD_CLIENT_SECRET: ${{ secrets.GD_CLIENT_SECRET }}
         GD_REFRESH_TOKEN: ${{ secrets.GD_REFRESH_TOKEN }}
+        TZ: Asia/Tokyo
       run: |
         gem install bundler
         bundle update --bundler
