@@ -41,7 +41,7 @@ data = driver.page_source.scan(/source\.data\.push\(\"(\d\.\d{2})\"\)/).flatten.
 session = GoogleDrive::Session.from_config('config.json')
 ws = session.spreadsheet_by_key(ENV['SPREADSHEET_KEY']).worksheets[0]
 48.times do |n|
-  datetime = DateTime.parse(target_date.to_s) + Rational(0.5 * n, 24) # 30 分刻み
+  datetime = DateTime.parse(yesterday.to_s) + Rational(0.5 * n, 24) # 30 分刻み
   new_row = ws.num_rows + 1
   ws[new_row, 1] = datetime.strftime("%Y/%m/%d %H:%M:%S")
   ws[new_row, 2] = data[n]
