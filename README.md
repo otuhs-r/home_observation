@@ -9,7 +9,7 @@
 
 ## 帰宅時に照明 ON
 
-- [Sesame Webhooks](https://docs.candyhouse.co/#sesame-webhook) で鍵の状態が変化したら GAS へリクエスト送信
+- 鍵の状態が変化したら [Sesame Webhooks](https://docs.candyhouse.co/#sesame-webhook) で GAS へリクエスト送信
 - 5 分前の部屋の照度が低ければ、帰宅時と判断して照明を ON に
   - 記録しているセンサー情報を参照
   - 詳細は [こちらの記事](https://qiita.com/otuhs_d/items/039a77d4edbc542348ee) に書きました
