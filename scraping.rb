@@ -3,7 +3,7 @@ require 'date'
 require 'dotenv/load'
 require 'google_drive'
 
-driver = Selenium::WebDriver.for :remote, desired_capabilities: :chrome
+driver = Selenium::WebDriver.for :remote, desired_capabilities: :chrome, url: "http://#{ENV['SELENIUM_HOST']}:4444/wd/hub"
 
 def driver.find_and_wait_element(how, what)
   Selenium::WebDriver::Wait.new(timeout: 10).until{ find_element(how, what) }
